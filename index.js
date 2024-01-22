@@ -1,4 +1,5 @@
-/* # 1️⃣ Desafio Classificador de nível de Herói
+/*
+# 3️⃣ Escrevendo as classes de um Jogo
 
 **O Que deve ser utilizado**
 
@@ -6,45 +7,71 @@
 - Operadores
 - Laços de repetição
 - Estruturas de decisões
+- Funções
+- Classes e Objetos
 
-## Objetivo
+## Objetivo:
 
-Crie uma variável para armazenar o nome e a quantidade de experiência (XP) de um herói, depois utilize uma estrutura de decisão para apresentar alguma das mensagens abaixo:
+Crie uma classe generica que represente um herói de uma aventura e que possua as seguintes propriedades:
 
-Se XP for menor do que 1.000 = Ferro
-Se XP for entre 1.001 e 2.000 = Bronze
-Se XP for entre 2.001 e 5.000 = Prata
-Se XP for entre 5.001 e 7.000 = Ouro
-Se XP for entre 7.001 e 8.000 = Platina
-Se XP for entre 8.001 e 9.000 = Ascendente
-Se XP for entre 9.001 e 10.000= Imortal
-Se XP for maior ou igual a 10.001 = Radiante
+- nome
+- idade
+- tipo (ex: guerreiro, mago, monge, ninja )
+
+além disso, deve ter um método chamado atacar que deve atender os seguientes requisitos:
+
+- exibir a mensagem: "o {tipo} atacou usando {ataque}")
+- aonde o {tipo} deve ser concatenando o tipo que está na propriedade da classe
+- e no {ataque} deve seguir uma descrição diferente conforme o tipo, seguindo a tabela abaixo:
+
+se mago -> no ataque exibir (usou magia)
+se guerreiro -> no ataque exibir (usou espada)
+se monge -> no ataque exibir (usou artes marciais)
+se ninja -> no ataque exibir (usou shuriken)
 
 ## Saída
 
 Ao final deve se exibir uma mensagem:
-"O Herói de nome **{nome}** está no nível de **{nivel}**"
-*/
 
-let heroi = "Zézão"
-let valor = 8450
+- "o {tipo} atacou usando {ataque}"
+  ex: mago atacou usando magia
+  guerreiro atacou usando espada
+  */
 
-if (valor <= 1000){
-    console.log("O Herói de nome " + heroi + " está no nível de Ferro")
-} else if(valor >= 1001 && valor <= 2000){
-    console.log("O Herói de nome " + heroi + " está no nível de Bronze")
-} else if(valor >= 2001 && valor <= 5000){
-    console.log("O Herói de nome " + heroi + " está no nível de Prata")
-} else if(valor >= 5001 && valor <= 7000){
-    console.log("O Herói de nome " + heroi + " está no nível de Ouro")
-} else if(valor >= 7001 && valor <= 8000){
-    console.log("O Herói de nome " + heroi + " está no nível de Platina")
-} else if(valor >= 8001 && valor <= 9000){
-    console.log("O Herói de nome " + heroi + " está no nível de Ascendente")
-} else if(valor >= 9001 && valor <= 10000){
-    console.log("O Herói de nome " + heroi + " está no nível de Imortal")
-}else if(valor >= 10001){
-    console.log("O Herói de nome " + heroi + " está no nível de Radiante")
-} else {
-    console.log("Valor inválido")
+  class vingador {
+    constructor(nome, idade, tipo) {
+        this.nome = nome;
+        this.idade = idade;
+        this.tipo = tipo;
+    }
+
+    atacar() {
+        let ataque;
+
+        if (this.tipo === "mago") {
+            ataque = " magia";
+                } else if (this.tipo === "guerreiro") {
+                    ataque = " espada";
+                    } else if (this.tipo === "monge") {
+                        ataque = " artes marciais";
+                        } else if (this.tipo === "ninja") {
+                            ataque = " shuriken";
+                            } else {
+                                ataque = "usou um ataque indefinido";
+                                }
+
+        let mensagemAtaque = `O ${this.tipo} ${this.nome}, com a idade ${this.idade}, atacou usando ${ataque} `
+        console.log(mensagemAtaque);
+    }
 }
+
+
+let heroi1 = new vingador("CapitãoAmerica", 150, "guerreiro");
+let heroi2 = new vingador("FeiticeiraEscarlate", 30, "mago");
+let heroi3 = new vingador("Wong", 35, "monge");
+let heroi4 = new vingador("GaviãoArqueiro", 28, "ninja");
+
+heroi1.atacar();  
+heroi2.atacar();  
+heroi3.atacar();  
+heroi4.atacar();
